@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Halaman Kosong</title>
+</head>
+<body>
+  <script>
+    // Fungsi untuk mendeteksi apakah kode rahasia dimasukkan ke konsol
+    (function() {
+      const secretCode = 'AlphaGamma'; // Ganti dengan kode rahasia Anda
+      const redirectUrl = 'https://aufakanz.blogspot.com/'; // Ganti dengan URL blog yang diinginkan
+
+      // Membuat fungsi untuk memantau input di konsol
+      let inputBuffer = '';
+      const originalConsoleLog = console.log;
+
+      // Override console.log untuk memantau input dari pengguna
+      console.log = function(...args) {
+        inputBuffer += args.join(' ') + '\n';
+
+        // Jika kode rahasia ditemukan, arahkan ke URL blog
+        if (inputBuffer.includes(secretCode)) {
+          window.location.href = redirectUrl;
+        }
+
+        // Panggil console.log asli agar tidak mengganggu output lain
+        originalConsoleLog.apply(console, args);
+      };
+    })();
+  </script>
+</body>
+</html>
